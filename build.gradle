@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'top.it6666'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    maven {
+        url 'https://maven.aliyun.com/repository/google/'
+    }
+    maven {
+        url 'https://maven.aliyun.com/repository/central/'
+    }
+    // 你可以保留默认的 jcenter() 和 mavenCentral()，以防阿里云仓库没有你需要的依赖
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // 添加 web 依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // 添加 commons-io
+    implementation 'commons-io:commons-io:2.11.0'
+    // 添加 yitter-IdGenerator
+    // https://mvnrepository.com/artifact/com.github.yitter/yitter-idgenerator
+    implementation group: 'com.github.yitter', name: 'yitter-idgenerator', version: '1.0.6'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    # \u914D\u7F6E\u4E0A\u4E0B\u6587\u8DEF\u5F84\uFF0C\u4E5F\u5C31\u662F\u8BF4\u8BBF\u95EE\u7684\u65F6\u5019\u9700\u8981\u52A0\u4E0A/ocr
+    context-path: /ocr
+
+# ocr
+ocr:
+  # img-path: /data/paddle_ocr/img/%s
+  img-path: D:/IdeaPro/OCR/ocr-api/img/%s
+  paddle-ocr-url: http://127.0.0.1:8888/ocr,http://127.0.0.1:8889/ocr
